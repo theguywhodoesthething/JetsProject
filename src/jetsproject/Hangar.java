@@ -2,7 +2,7 @@ package jetsproject;
 
 public class Hangar {
 
-	Jet[] jets = new Jet[100];
+	Jet[] jets = new Jet[JetsProjectMain.CAPACITY];
 	
 	public Hangar() {}
 
@@ -28,10 +28,9 @@ public class Hangar {
 		return this;
 	}
 
-	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Hangar\t");
+		builder.append("Hangar\n");
 		for (Jet i : jets) {
 			if (i != null) {
 				builder.append(i.toString());
@@ -40,7 +39,5 @@ public class Hangar {
 		}
 		return builder.toString();
 	}
-	
-	
 
 }

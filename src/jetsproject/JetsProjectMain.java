@@ -8,22 +8,24 @@ public class JetsProjectMain {
 	
 	private static Hangar hangar = new Hangar();
 	private static Barracks barracks = new Barracks();
-	private static Jet[] jetArray = new Jet[100];
-	private static Pilot[] pilotArray = new Pilot[100];
 	
-	public static void main(String[] args) {
+	public static final int CAPACITY = 100;											// CAPACITY = the size of the
+																					// array that holds the pilots
+	public static void main(String[] args) {										// and jets, for a bigger
+																					// barracks or hangar use a
+		int c = 0, p = 0;															// bigger number	
 		
-		int c = 0, p = 0;
-		
+		Pilot[] pilotArray = new Pilot[CAPACITY];
 		pilotArray[c++] = new Pilot("Bart Simpson", 13, 6);							// assign the first 5
 		pilotArray[c++] = new Pilot("Walter White", 42, 8);							// spots in the pilot array
-		pilotArray[c++] = new Pilot("Betty White", 86, 54);							// and a default for the
+		pilotArray[c++] = new Pilot("Elizabeth White", 86, 54);						// and a default for the
 		pilotArray[c++] = new Pilot("Harold Jones", 25, 1);							// last array position
 		pilotArray[c++] = new Pilot("Bender Rodridguez", 33, 3);
-		pilotArray[99] = new Pilot("no pilot", 0, 0);
+		pilotArray[CAPACITY-1] = new Pilot("none assigned", 0, 0);
 		
 		c = 0;
 		
+		Jet[] jetArray = new Jet[CAPACITY];
 		jetArray[c++] = new Jet("Spider", 300.0, 3300.0, 6e6, pilotArray[p++]);		// assign the first 5
 		jetArray[c++] = new Jet("Duckie", 200.0, 7200.0, 5e6, pilotArray[p++]);		// jets and assigns the
 		jetArray[c++] = new Jet("Weasel", 350.0, 6100.0, 2e6, pilotArray[p++]);		// first 5 pilots to those
@@ -35,7 +37,7 @@ public class JetsProjectMain {
 		
 		char selection;
 		
-		System.out.println("Welcome to the Jets Program. What would you like to do?\n");
+		System.out.println("\nWelcome to the Jets Program. What would you like to do?");
 
 		while (true) {
 
@@ -65,8 +67,8 @@ public class JetsProjectMain {
 		}
 	}
 	
-	public static Jet fastJet() {
-		Jet fast = null;
+	public static Jet fastJet() {						// finds and returns the fastest
+		Jet fast = null;								// jet in the hangar
 		double big = Double.MIN_VALUE;
 		
 		for (Jet i : hangar.getJets()) {
@@ -81,8 +83,8 @@ public class JetsProjectMain {
 		return fast;
 	}
 	
-	public static Jet longJet() {
-		Jet range = null;
+	public static Jet longJet() {						// finds and returns the longest
+		Jet range = null;								// range jet in the hangar
 		double big = Double.MIN_VALUE;
 		
 		for (Jet i : hangar.getJets()) {
@@ -104,14 +106,14 @@ public class JetsProjectMain {
 		kb.nextLine();
 		System.out.println("Please enter the model of your new jet.");
 		newJet.setModel(kb.nextLine());
-		System.out.println("Please enter the speed of your new jet.");
+		System.out.println("Please enter the speed of your new jet in MPH.");
 		newJet.setSpeed(kb.nextDouble());
-		System.out.println("Please enter the range of your new jet.");
+		System.out.println("Please enter the range of your new jet in mi.");
 		newJet.setRange(kb.nextDouble());
-		System.out.println("Please enter the price of your new jet.");
+		System.out.println("Please enter the price of your new jet in $.");
 		newJet.setPrice(kb.nextDouble());
 		
-		newJet.setPilot(pilotArray[99]);
+		newJet.setPilot(barracks.getPilots()[CAPACITY-1]);
 		
 		hangar.addJet(newJet);
 
@@ -127,7 +129,7 @@ public class JetsProjectMain {
 		newPilot.setName(kb.nextLine());
 		System.out.println("Please enter the age of your new pilot.");
 		newPilot.setAge(kb.nextInt());
-		System.out.println("Please enter the experience of your new pilot.");
+		System.out.println("Please enter the experience of your new pilot in y.");
 		newPilot.setExperience(kb.nextInt());
 		
 		barracks.hirePilot(newPilot);
@@ -135,11 +137,11 @@ public class JetsProjectMain {
 		System.out.println("Your new pilot has been added to the barracks.");
 	}
 	
-	public static void assignPilot() {
-		
-		String newPilotName;
-		String pilotsNewJetName;
-		Pilot pilotToReassign = null;
+	public static void assignPilot() {							// allows the user to reassign
+																// any pilot that already exits
+		String newPilotName;									// in the barracks to any jet
+		String pilotsNewJetName;								// that already exists in the
+		Pilot pilotToReassign = null;							// hangar
 		Jet jetToReassign = null;
 		
 

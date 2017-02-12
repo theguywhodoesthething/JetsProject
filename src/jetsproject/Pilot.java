@@ -37,14 +37,14 @@ public class Pilot {
 		this.experience = experience;
 	}
 
-	@Override
+
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Pilot name: ");
+		builder.append("\nPilot name: ");
 		builder.append(name);
 		builder.append("\tage: ");
 		builder.append(age);
-		builder.append("\texperience:");
+		builder.append("\texperience in y:");
 		builder.append(experience);
 		builder.append("\n");
 		return builder.toString();

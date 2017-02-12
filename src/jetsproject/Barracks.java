@@ -2,7 +2,7 @@ package jetsproject;
 
 public class Barracks {
 	
-	private Pilot[] pilots = new Pilot[100];
+	private Pilot[] pilots = new Pilot[JetsProjectMain.CAPACITY];
 	
 	public Barracks() {}
 
@@ -18,7 +18,6 @@ public class Barracks {
 		this.pilots = pilots;
 	}
 	
-	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Barracks\n");

@@ -57,23 +57,26 @@ public class Jet {
 		this.pilot = pilot;
 	}
 
-	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet model: ");
+		builder.append("\nJet model: ");
 		builder.append(model);
-		builder.append("\tspeed: ");
+		builder.append("\tspeed in MPH: ");
 		builder.append(speed);
-		builder.append("\trange: ");
+		builder.append("\tspeed in MACH: ");
+		builder.append(this.mphToMach());
+		builder.append("\trange in mi: ");
 		builder.append(range);
-		builder.append("\tprice: ");
+		builder.append("\tprice in $: ");
 		builder.append(price);
-		builder.append("\tpilot: ");
+		builder.append("\t");
 		builder.append(pilot);
 		builder.append("\t");
 		return builder.toString();
 	}
 	
-	
+	public int mphToMach() {							// takes the speed of the plane in MPH
+		return (int)(this.speed/767.269);				// and converts it to MACH, returned as
+	}													// an int
 	
 }
