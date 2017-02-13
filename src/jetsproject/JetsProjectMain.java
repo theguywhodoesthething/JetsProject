@@ -5,37 +5,17 @@ import java.util.Scanner;
 public class JetsProjectMain {
 	
 	private static Scanner kb = new Scanner(System.in);
-	
-	private static Hangar hangar = new Hangar();
-	private static Barracks barracks = new Barracks();
-	
-	public static final int CAPACITY = 100;											// CAPACITY = the size of the
-																					// array that holds the pilots
-	public static void main(String[] args) {										// and jets, for a bigger
+																					// CAPACITY = the size of the
+	private static Hangar hangar = new Hangar();									// array that holds the pilots
+	private static Barracks barracks = new Barracks();								// and jets, for a bigger
 																					// barracks or hangar use a
-		int c = 0, p = 0;															// bigger number	
-		
-		Pilot[] pilotArray = new Pilot[CAPACITY];
-		pilotArray[c++] = new Pilot("Bart Simpson", 13, 6);							// assign the first 5
-		pilotArray[c++] = new Pilot("Walter White", 42, 8);							// spots in the pilot array
-		pilotArray[c++] = new Pilot("Elizabeth White", 86, 54);						// and a default for the
-		pilotArray[c++] = new Pilot("Harold Jones", 25, 1);							// last array position
-		pilotArray[c++] = new Pilot("Bender Rodridguez", 33, 3);
-		pilotArray[CAPACITY-1] = new Pilot("none assigned", 0, 0);
-		
-		c = 0;
-		
-		Jet[] jetArray = new Jet[CAPACITY];
-		jetArray[c++] = new Jet("Spider", 300.0, 3300.0, 6e6, pilotArray[p++]);		// assign the first 5
-		jetArray[c++] = new Jet("Duckie", 200.0, 7200.0, 5e6, pilotArray[p++]);		// jets and assigns the
-		jetArray[c++] = new Jet("Weasel", 350.0, 6100.0, 2e6, pilotArray[p++]);		// first 5 pilots to those
-		jetArray[c++] = new Jet("Warthog", 1150.0, 5500.0, 1e6, pilotArray[p++]);	// jets
-		jetArray[c++] = new Jet("B-52 LS", 280.0, 21100.0, 6e6, pilotArray[p++]);
-		
-		hangar = new Hangar(jetArray);
-		barracks = new Barracks(pilotArray);
-		
-		char selection;
+	public static final int CAPACITY = 100;											// bigger number
+																					
+	public static void main(String[] args) {										
+	
+		init();																		// Initializes the hangar
+																					// and the barracks
+		char selection;																
 		
 		System.out.println("\nWelcome to the Jets Program. What would you like to do?");
 
@@ -65,6 +45,32 @@ public class JetsProjectMain {
 				default: System.out.println("I don't understand that selection. Please try again.");		
 			}
 		}
+	}
+	
+	private static void init() {
+	
+		int c = 0, p = 0;																
+		
+		Pilot[] pilotArray = new Pilot[CAPACITY];
+		pilotArray[c++] = new Pilot("Bart Simpson", 13, 6);							// assign the first 5
+		pilotArray[c++] = new Pilot("Walter White", 42, 8);							// spots in the pilot array
+		pilotArray[c++] = new Pilot("Elizabeth White", 86, 54);						// and a default for the
+		pilotArray[c++] = new Pilot("Harold Jones", 25, 1);							// last array position
+		pilotArray[c++] = new Pilot("Bender Rodridguez", 33, 3);
+		pilotArray[CAPACITY-1] = new Pilot("none assigned", 0, 0);
+		
+		c = 0;
+		
+		Jet[] jetArray = new Jet[CAPACITY];
+		jetArray[c++] = new Jet("Spider", 300.0, 3300.0, 6e6, pilotArray[p++]);		// assign the first 5
+		jetArray[c++] = new Jet("Duckie", 200.0, 7200.0, 5e6, pilotArray[p++]);		// jets and assigns the
+		jetArray[c++] = new Jet("Weasel", 350.0, 6100.0, 2e6, pilotArray[p++]);		// first 5 pilots to those
+		jetArray[c++] = new Jet("Warthog", 1150.0, 5500.0, 1e6, pilotArray[p++]);	// jets
+		jetArray[c++] = new Jet("B-52 LS", 280.0, 21100.0, 6e6, pilotArray[p++]);
+		
+		hangar = new Hangar(jetArray);
+		barracks = new Barracks(pilotArray);
+		
 	}
 	
 	public static Jet fastJet() {						// finds and returns the fastest
